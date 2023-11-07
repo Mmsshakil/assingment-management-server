@@ -67,8 +67,16 @@ async function run() {
         })
 
 
-         // delete a assingment
-         app.delete('/assingments/:id', async (req, res) => {
+        // show all my assingments
+        app.get('/myAssingments', async (req, res) => {
+            const cursor = takeAssingmentCollection.find();
+            const result = await cursor.toArray();
+            res.send(result);
+        })
+
+
+        // delete a assingment
+        app.delete('/assingments/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) }
             const result = await productCollection.deleteOne(query);
@@ -176,7 +184,7 @@ async function run() {
         })
 
 
-       
+
 
         // ------------------this part is very very important-------------
         // if i click on samsung it will show me just samsung brand products
