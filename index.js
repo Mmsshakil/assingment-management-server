@@ -34,6 +34,8 @@ async function run() {
         // await client.connect();
 
         const productCollection = client.db('assingmentDB').collection('product');
+        const takeAssingmentCollection = client.db('takeAssingment').collection('submited');
+
 
         // add product
         app.post('/product', async (req, res) => {
@@ -41,7 +43,14 @@ async function run() {
             console.log(newProduct);
             const result = await productCollection.insertOne(newProduct);
             res.send(result);
+        })
 
+        // add submited / take assingment
+        app.post('/submited', async (req, res) => {
+            const newSubmit = req.body;
+            console.log(newSubmit);
+            const result = await takeAssingmentCollection.insertOne(newSubmit);
+            res.send(result);
         })
 
         // show all product
