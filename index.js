@@ -132,29 +132,7 @@ async function run() {
 
         })
 
-        // // update the product
-        // app.put('/product/:id', async (req, res) => {
-        //     const id = req.params.id;
-        //     const filter = { _id: new ObjectId(id) }
-        //     const options = { upsert: true };
-        //     const updatedProduct = req.body;
-        //     const product = {
-        //         $set: {
-        //             photo: updatedProduct.photo,
-        //             name: updatedProduct.name,
-        //             brand: updatedProduct.brand,
-        //             type: updatedProduct.type,
-        //             price: updatedProduct.price,
-        //             descrip: updatedProduct.descrip,
-        //             rating: updatedProduct.rating
-
-        //         }
-        //     }
-
-        //     const result = await productCollection.updateOne(filter, product, options);
-        //     res.send(result);
-
-        // })
+    
 
 
         // update the assingment
@@ -210,24 +188,6 @@ async function run() {
             res.send(result);
 
         })
-
-
-
-
-        // ------------------this part is very very important-------------
-        // if i click on samsung it will show me just samsung brand products
-        // home brand 
-        app.get('/product/:brand', async (req, res) => {
-            const brand = req.params.brand;
-            const query = { brand: brand };
-            const result = await productCollection.find(query).toArray();
-            res.send(result);
-        })
-        // ---------------------------------------------------------------
-
-
-
-
 
 
         // Send a ping to confirm a successful connection
