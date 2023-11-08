@@ -10,13 +10,6 @@ require('dotenv').config();
 app.use(cors());
 app.use(express.json());
 
-
-// mongo user     pass
-
-
-
-// const uri = "mongodb+srv://<username>:<password>@cluster0.ernuycp.mongodb.net/?retryWrites=true&w=majority";
-
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.ernuycp.mongodb.net/?retryWrites=true&w=majority`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
