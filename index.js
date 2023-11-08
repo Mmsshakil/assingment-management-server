@@ -78,7 +78,7 @@ async function run() {
         })
 
         // find a product
-        app.get('/products/:id', async (req, res) => {
+        app.get('/product/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) }
             // console.log(query);
@@ -125,7 +125,8 @@ async function run() {
 
 
         // update the assingment
-        app.put('/assingmentDetails/:id', async (req, res) => {
+        // app.put('/assingmentDetails/:id', async (req, res) => {
+        app.put('/product/:id', async (req, res) => {
             const id = req.params.id;
             const filter = { _id: new ObjectId(id) }
             const options = { upsert: true };
@@ -138,7 +139,7 @@ async function run() {
                     mark: updatedProduct.mark,
                     descrip: updatedProduct.descrip,
                     selectLevel: updatedProduct.selectLevel,
-                    selectDate: updatedProduct.selectDate,
+                    selectDate: updatedProduct.selectDate
                     // email: updatedProduct.email
 
                 }
