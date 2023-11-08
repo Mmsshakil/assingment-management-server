@@ -68,7 +68,7 @@ async function run() {
         })
 
 
-        // delete a assingment
+        // delete a assingment by specific user
         app.delete('/assingments/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) }
@@ -76,8 +76,6 @@ async function run() {
             res.send(result);
 
         })
-
-
 
         // find a product
         app.get('/products/:id', async (req, res) => {
@@ -124,8 +122,6 @@ async function run() {
             res.send(result);
 
         })
-
-    
 
 
         // update the assingment
