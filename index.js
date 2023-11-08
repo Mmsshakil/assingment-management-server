@@ -104,6 +104,34 @@ async function run() {
             res.send(result);
         })
 
+        // show one assing's data in markAssingment page
+        app.get('/submitedAssingment/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: new ObjectId(id) }
+            // console.log(query);
+            const result = await takeAssingmentCollection.findOne(query);
+            res.send(result);
+        })
+
+        // mark update here
+        app.put('/submitedAssingment/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: new ObjectId(id) };
+            const options = { upsert: true };
+            const updatedConfirm = req.body;
+            console.log(updatedConfirm);
+            const updatedDoc = {
+                $set: {
+                    status: updatedConfirm.status,
+                    finalMark: updatedConfirm.finalMark,
+                    finalFeedback: updatedConfirm.finalFeedback
+                }
+            }
+            const result = await takeAssingmentCollection.updateOne(filter, updatedDoc, options);
+            res.send(result);
+
+        })
+
         // // update the product
         // app.put('/product/:id', async (req, res) => {
         //     const id = req.params.id;
